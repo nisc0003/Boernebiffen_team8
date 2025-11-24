@@ -5,6 +5,16 @@
 @import "tailwindcss-animated";
 @import "tailwindcss-intersect";
 
+/* @font-face {
+  font-family: "Grenadine MVB";
+  src: url("/fonts/Montserrat-VariableFont_wght.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("/fonts/Montserrat-VariableFont_wght.ttf") format("truetype");
+} */
+
 @theme {
   /* Her tilføjes theme variable // tokens */
 
@@ -52,6 +62,7 @@
   --color-accent-5-500: #08893a;
   --color-accent-5-600: #0e6330;
   /*Typografi */
+
   --font-display: "Grenadine MVB", sans-serif;
   --font-sans: "Poppins", sans-serif;
 
