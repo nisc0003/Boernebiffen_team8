@@ -5,21 +5,6 @@
 @import "tailwindcss-animated";
 @import "tailwindcss-intersect";
 
-@font-face {
-  font-family: "Honk";
-  src: url("/fonts/Honk-Regular-VariableFont_MORF,SHLN.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Quicksand";
-  src: url("/fonts/Quicksand-VariableFont_wght.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Domine";
-  src: url("/fonts/Domine-Regular.ttf") format("truetype");
-}
-
 @theme {
   /* Her tilføjes theme variable // tokens */
 
