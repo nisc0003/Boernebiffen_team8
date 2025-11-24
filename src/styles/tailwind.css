@@ -24,17 +24,58 @@
   /* Her tilføjes theme variable // tokens */
 
   /*Farver */
-  --color-primary-400: #00e4f5;
-  --color-primary-500: #006269;
-  --color-primary-600: #006d75;
-  --color-secondary-400: #f5e400;
-  --color-secondary-500: #f5a600;
-  --color-secondary-600: #f57a00;
+  /* cream color */
+  --color-primary: #fffceb;
+  /* white color */
+  --color-secondary: #ffffff;
+  /* black color color */
+  --color-base: #1a1a19;
 
+  /* accent fave 1 pink */
+  --color-accent-1-100: #fbdbdf;
+  --color-accent-1-200: #f9bad4;
+  --color-accent-1-300: #f59ac8;
+  --color-accent-1-400: #f279bc;
+  --color-accent-1-500: #bc6293;
+  --color-accent-1-600: #86496b;
+  /* accent fave 2 yellow */
+  --color-accent-2-100: #ffeab0;
+  --color-accent-2-200: #ffd877;
+  --color-accent-2-300: #ffc73c;
+  --color-accent-2-400: #ffb502;
+  --color-accent-2-500: #c68f07;
+  --color-accent-2-600: #8c670e;
+  /* accent fave 3 blue*/
+  --color-accent-3-100: #c3d9ec;
+  --color-accent-3-200: #87b6ef;
+  --color-accent-3-300: #4b94f0;
+  --color-accent-3-400: #0f71f2;
+  --color-accent-3-500: #125cbb;
+  --color-accent-3-600: #144586;
+  /* accent fave 4 red*/
+  --color-accent-4-100: #fbcdbc;
+  --color-accent-4-200: #f99e8e;
+  --color-accent-4-300: #f5705f;
+  --color-accent-4-400: #f24130;
+  --color-accent-4-500: #bc382a;
+  --color-accent-4-600: #862d25;
+  /* accent fave 5 green*/
+  --color-accent-5-100: #bfe8c1;
+  --color-accent-5-200: #81d499;
+  --color-accent-5-300: #41c16f;
+  --color-accent-5-400: #02ad46;
+  --color-accent-5-500: #08893a;
+  --color-accent-5-600: #0e6330;
   /*Typografi */
-  --font-display: "Honk", monospace;
-  --font-sans: "Quicksand", sans-serif;
-  --font-serif: "Domine", serif;
+  --font-display: "Grenadine MVB", sans-serif;
+  --font-sans: "Poppins", sans-serif;
+
+  --breakpoint-xs: 480px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
 }
 
 @layer base {
