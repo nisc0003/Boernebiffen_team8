@@ -1,0 +1,59 @@
+---
+import Heading from "../components/Heading.astro";
+import Text from "../components/Text.astro";
+import Link from "../components/Link.astro";
+import Button from "../components/Button.astro";
+import Play from "../assets/buttons/play.svg";
+import Heart from "../assets/buttons/heart.svg";
+---
+
+<article
+  class="flex w-[274px] h-[373.048px] p-6 flex-col justify-center items-center gap-3 rounded-[5px] bg-[#C3D9EC]"
+>
+  <!-- IMAGE WRAPPER -->
+<div class="relative grid justify-center items-center group">
+    <!-- IMAGE -->
+    <img
+        src="https://placehold.co/600x400"
+        class="w-full h-auto rounded-lg object-cover"
+    />
+    <!-- PLAY BUTTON (show on hover) -->
+    <div class="absolute inset-0 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+        <Button variant="black" shape="round" size="sm"><Play /></Button>
+    </div>
+</div>
+  <!-- HEADING -->
+  <h2
+    class="w-[246px] text-[#1A1A19] font-poppins text-[20px] font-bold leading-normal"
+  >
+    Lygtefisk
+  </h2>
+
+  <!-- BOTTOM FLEX ROW -->
+  <div class="flex w-[246px] justify-between items-end">
+    <!-- LEFT SIDE: dot + minutes -->
+    <div class="flex items-center gap-2">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="17"
+        height="17"
+        viewBox="0 0 17 17"
+        fill="none"
+      >
+        <circle cx="8.5" cy="8.5" r="8.5" fill="#F24130"></circle>
+      </svg>
+      <span
+        class="text-[#1A1A19] font-poppins text-[18px] font-medium leading-normal"
+        >3 min</span
+      >
+    </div>
+
+    <!-- HEART BUTTON -->
+    <button
+      class="flex w-[41.048px] h-[41.048px] justify-center items-center flex-shrink-0"
+    >
+      <!-- Insert your Heart SVG here -->
+      ❤️
+    </button>
+  </div>
+</article>
