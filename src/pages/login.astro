@@ -1,0 +1,78 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Heading from "../components/Heading.astro";
+import Text from "../components/Text.astro";
+import Button from "../components/Button.astro";
+import Link from "../components/Link.astro";
+
+// Mobile-first Tailwind klasser som variabler
+const containerClass = "w-[85%] max-w-xs sm:w-full sm:max-w-md text-center mx-auto";
+const inputClass = "mt-3 w-full sm:w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base placeholder-gray-500 border border-gray-200 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-[rgba(15,122,102,0.12)] block";
+const buttonClass = "mt-4 w-full sm:w-full px-3 sm:px-4 py-2 sm:py-3 bg-yellow-300 hover:bg-yellow-400 text-white font-bold rounded-lg tracking-wide uppercase text-sm sm:text-base shadow-sm focus:outline-none focus:ring-4 focus:ring-[rgba(0,0,0,0.08)] block";
+const bottomTextClass = "text-white mt-5";
+const linkClass = "font-bold text-white mt-2 inline-block";
+---
+<MainLayout title="Log ind">
+  <main class="min-h-screen bg-[var(--color-accent-5-100,#F7E3A9)] flex items-start justify-center py-10 px-4 sm:px-6">
+    <div class={containerClass}>
+      <Heading
+        htmlheading="h1"
+        size="large"
+        weight="ExtraBold"
+        stylingclasses="text-2xl sm:text-3xl md:text-4xl leading-tight text-[#111]"
+      >
+        Log ind
+      </Heading>
+
+      <Text
+        teksttype="konsultativ"
+        stylingclasses="text-[#111] font-semibold text-sm sm:text-base mt-3"
+      >
+        Brug dit bibliotekslogin til at se alle vores film.
+      </Text>
+
+      <form class="mt-5" on:submit="event.preventDefault();" aria-label="Log ind formular">
+        <!-- CPR / Email -->
+        <input
+          id="cpr"
+          name="cpr"
+          type="text"
+          inputmode="numeric"
+          autocomplete="username"
+          placeholder="Indtast dit CPR eller lånernummer"
+          required
+          class={inputClass}
+        />
+
+        <!-- Kodeord -->
+        <input
+          id="kode"
+          name="kode"
+          type="password"
+          autocomplete="current-password"
+          placeholder="Kodeord"
+          required
+          class={inputClass}
+        />
+
+        <!-- Log ind knap -->
+        <Button
+          type="submit"
+          variant="accent5"
+          size="lg"
+          stylingclasses={buttonClass}
+          aria-label="Log ind"
+        >
+          LOG IND
+        </Button>
+
+        <Text teksttype="brødtekst" stylingclasses={bottomTextClass}>
+          Ikke medlem af børnebiffen endnu?
+        </Text>
+        <Link href="/bliv-medlem" stylingclasses={linkClass}>
+          Bliv medlem
+        </Link>
+      </form>
+    </div>
+  </main>
+</MainLayout>
