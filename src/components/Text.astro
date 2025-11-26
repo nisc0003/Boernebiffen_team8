@@ -3,21 +3,36 @@
 const {
   teksttype = "brødtekst",
   font = "sans",
+  weight = "normal",
   stylingclasses = "",
 } = Astro.props;
 
 //Definer den styling (Tailwind classes), der gør sig gældende for de forskellige størrelser.
 const sizeClasses = {
-  konsultativ: "text-sm text-italic",
-  brødtekst: "text-xl my-4",
+  konsultativ: "text-italic xl:text-[1.25rem] lg:text-[1.125rem] text-[1rem]",
+  brødtekst: "my-4 xl:text-[1.25rem] lg:text-[1.125rem] text-[1rem]",
 };
 
 const fontClasses = {
   display: "font-display",
   sans: "font-sans",
 };
+
+const weightClasses = {
+  bold: "font-bold",
+  medium: "font-medium",
+  normal: "font-regular",
+  light: "font-light",
+};
 ---
 
-<p class:list={[sizeClasses[teksttype], fontClasses[font], stylingclasses]}>
+<p
+  class:list={[
+    sizeClasses[teksttype],
+    fontClasses[font],
+    weightClasses[weight],
+    stylingclasses,
+  ]}
+>
   <slot />
 </p>

@@ -1,27 +1,50 @@
 ---
 // Henter parametrene fra Astro.props
-const { variant = "primary", size = "medium" } = Astro.props;
+const { variant = "accentnone", size = "sm" } = Astro.props;
 
-//Definer den styling (Tailwind classes, der gør sig gældende for alle knapper)
-const buttonStyling = "border-2 px-16 py-4";
+// Generiske knap-klasser (layout)
+const baseClasses =
+  "inline-flex items-center justify-center rounded-md font-medium select-none transition-all duration-150 font-display";
 
-//Definer den styling (Tailwind classes), der gør sig gældende for de forskellige varianter
 const variantClasses = {
-  primary:
-    "border-black hover:bg-black hover:text-white hover:-skew-x-12 transition-all duration-700" /* border-primary-500 */,
-  secondary:
-    "border-blue-500 hover:bg-blue-500 hover:border-blue-200" /* border-secondary-500 */,
+  accent1:
+    "bg-accent-1-400 border-accent-1-400 text-white hover:bg-accent-1-200 hover:border-accent-1-200 active:bg-accent-1-100",
+  accent2:
+    "bg-accent-2-400 border-accent-2-400 text-white hover:bg-accent-2-200 hover:border-accent-2-200 active:bg-accent-2-100",
+  accent3:
+    "bg-accent-3-400 border-accent-3-400 text-white hover:bg-accent-3-200 hover:border-accent-3-200 active:bg-accent-3-100",
+  accent4:
+    "bg-accent-4-400 border-accent-4-400 text-white hover:bg-accent-4-200 hover:border-accent-4-200 active:bg-accent-4-100",
+  accent5:
+    "bg-accent-5-400 border-accent-5-400 text-white hover:bg-accent-5-200 hover:border-accent-5-200 active:bg-accent-5-100",
 };
 
-//Definer den styling (Tailwind classes), der gør sig gældende for de forskelligeog størrelser.
 const sizeClasses = {
-  large: "text-4xl",
-  medium: "text-xl",
-  small: "text-large",
+  sm: "px-8 py-3 text-[1.25rem]",
+  md: "px-12 py-4 text-[1.5rem]",
+  lg: "px-16 py-6 text-[2rem]",
 };
 ---
 
 <!--Sæt classes for den pågældende knap sammen ved hjælp af Astros class:list -->
-<button class:list={[buttonStyling, variantClasses[variant], sizeClasses[size]]}
-  ><slot /></button
+<button
+  class:list={[
+    baseClasses,
+    variantClasses[variant],
+    sizeClasses[size],
+    "btn-component",
+  ]}
+  style={`--btn-icon-size:`}
 >
+  <span class="flex items-center justify-center">
+    <span class="inline-flex items-center"><slot name="icon" /></span>
+    <slot />
+  </span>
+</button>
+
+<style>
+  .btn-component svg {
+    width: var(--btn-icon-size);
+    height: var(--btn-icon-size);
+  }
+</style>
