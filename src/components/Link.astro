@@ -1,33 +1,48 @@
 ---
-// Henter parametrene fra Astro.props
+// Enhanced Link Component - matches Button styling but as links
 const {
   href = "#",
   target = "_self",
-  variant = "accentnone",
-  size = "text",
+  variant = "accent1",
+  size = "sm",
+  svg_accent = "white",
 } = Astro.props;
 
-const baseClasses = "";
+// Base classes for all links
+const baseClasses =
+  "inline-flex items-center justify-center gap-2 font-medium text-white select-none transition-all duration-200 font-display cursor-pointer hover:scale-105 active:scale-95 rounded-lg";
 
+// Background variant classes
 const variantClasses = {
-  accentnone: "",
-  accent1:
-    "bg-accent-1-400 border-accent-1-400 text-white hover:bg-accent-1-200 hover:border-accent-1-200 active:bg-accent-1-100 mr-2",
-  accent2:
-    "bg-accent-2-400 border-accent-2-400 text-white hover:bg-accent-2-200 hover:border-accent-2-200 active:bg-accent-2-100 mr-2",
-  accent3:
-    "bg-accent-3-400 border-accent-3-400 text-white hover:bg-accent-3-200 hover:border-accent-3-200 active:bg-accent-3-100 mr-2",
-  accent4:
-    "bg-accent-4-400 border-accent-4-400 text-white hover:bg-accent-4-200 hover:border-accent-4-200 active:bg-accent-4-100 mr-2",
-  accent5:
-    "bg-accent-5-400 border-accent-5-400 text-white hover:bg-accent-5-200 hover:border-accent-5-200 active:bg-accent-5-100 mr-2",
+  accent1: "bg-accent-1-400 hover:bg-accent-1-200 active:bg-accent-1-100",
+  accent2: "bg-accent-2-400 hover:bg-accent-2-200 active:bg-accent-2-100",
+  accent3: "bg-accent-3-400 hover:bg-accent-3-200 active:bg-accent-3-100",
+  accent4: "bg-accent-4-400 hover:bg-accent-4-200 active:bg-accent-4-100",
+  accent5: "bg-accent-5-400 hover:bg-accent-5-200 active:bg-accent-5-100",
 };
 
+// SVG color control classes
+const svg_accentClasses = {
+  white:
+    "[&_svg_*]:!fill-white hover:[&_svg_*]:!fill-white active:[&_svg_*]:!fill-white [&_svg]:transition-all",
+  accent1:
+    "[&_svg_*]:!fill-accent-1-200 hover:[&_svg_*]:!fill-accent-1-400 active:[&_svg_*]:!fill-accent-1-500 [&_svg]:transition-all",
+  accent2:
+    "[&_svg_*]:!fill-accent-2-200 hover:[&_svg_*]:!fill-accent-2-400 active:[&_svg_*]:!fill-accent-2-500 [&_svg]:transition-all",
+  accent3:
+    "[&_svg_*]:!fill-accent-3-200 hover:[&_svg_*]:!fill-accent-3-400 active:[&_svg_*]:!fill-accent-3-500 [&_svg]:transition-all",
+  accent4:
+    "[&_svg_*]:!fill-accent-4-200 hover:[&_svg_*]:!fill-accent-4-400 active:[&_svg_*]:!fill-accent-4-500 [&_svg]:transition-all",
+  accent5:
+    "[&_svg_*]:!fill-accent-5-200 hover:[&_svg_*]:!fill-accent-5-400 active:[&_svg_*]:!fill-accent-5-500 [&_svg]:transition-all",
+  none: "",
+};
+
+// Size classes
 const sizeClasses = {
-  text: "my-4 xl:text-[1.25rem] lg:text-[1.125rem] text-[1rem] font-sans",
-  sm: "px-8 py-3 text-[1.25rem] inline-flex items-center justify-center rounded-md font-medium select-none transition-all duration-150 font-display",
-  md: "px-12 py-4 text-[1.5rem] inline-flex items-center justify-center rounded-md font-medium select-none transition-all duration-150 font-display",
-  lg: "px-16 py-6 text-[2rem] inline-flex items-center justify-center rounded-md font-medium select-none transition-all duration-150 font-display",
+  sm: "px-6 py-2 text-[1rem]",
+  md: "px-8 py-3 text-[1.25rem]",
+  lg: "px-12 py-4 text-[1.5rem]",
 };
 ---
 
@@ -38,19 +53,9 @@ const sizeClasses = {
     baseClasses,
     variantClasses[variant],
     sizeClasses[size],
-    "link-component",
+    svg_accentClasses[svg_accent],
   ]}
-  style={`--link-icon-size:`}
 >
-  <span class="inline-flex items-center">
-    <span class="inline-flex items-center"><slot name="icon" /></span>
-    <slot />
-  </span>
+  <slot name="icon" />
+  <slot />
 </a>
-
-<style>
-  .link-component svg {
-    width: var(--link-icon-size);
-    height: var(--link-icon-size);
-  }
-</style>

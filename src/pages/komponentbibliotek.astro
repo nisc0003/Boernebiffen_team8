@@ -12,6 +12,11 @@ import Face2 from "../assets/buttons/face_2.svg";
 import Face3 from "../assets/buttons/face_3.svg";
 import Face4 from "../assets/buttons/face_4.svg";
 import Face5 from "../assets/buttons/face_5.svg";
+import Again from "../assets/buttons/again.svg";
+import Heart from "../assets/buttons/heart.svg";
+import Arrowright from "../assets/buttons/arrowright.svg";
+import Arrowleft from "../assets/buttons/arrowleft.svg";
+import Mag from "../assets/buttons/magnifier.svg";
 ---
 
 <MainLayout title="Titel">
@@ -21,13 +26,17 @@ import Face5 from "../assets/buttons/face_5.svg";
       >Her kan du finde alle de komponenter, der er brugt i dette projekt.</Text
     >
     <hr class="my-4" />
-    <!-- start på typografi -->
-    <!-- ______________________________________________________________________________________________ -->
+
+    <!-- ============================================================================================== -->
+    <!-- TYPOGRAPHY SECTION -->
+    <!-- ============================================================================================== -->
     <section class="mb-10">
-      <Heading htmlheading="h2" size="large">Typografi & ovesrkrifter</Heading>
+      <Heading htmlheading="h2" size="large">Typografi & overskrifter</Heading>
+
+      <!-- _____________________________ HEADERS _____________________________ -->
       <div class="flex-col">
         <div class="bg-accent-1-400 p-4">
-          <Heading htmlheading="h1" size="medium">Headers</Heading>
+          <Heading htmlheading="h3" size="medium">Headers</Heading>
         </div>
         <div class="flex flex-col gap-2 space space-between">
           <Heading
@@ -57,7 +66,8 @@ import Face5 from "../assets/buttons/face_5.svg";
           >
         </div>
       </div>
-      <!-- __________________________________________________ -->
+
+      <!-- _____________________________ PARAGRAPHS _____________________________ -->
       <div class="flex-col">
         <div class="bg-accent-2-400 p-4">
           <Heading htmlheading="h3" size="medium">Paragraph</Heading>
@@ -91,185 +101,235 @@ import Face5 from "../assets/buttons/face_5.svg";
       </div>
     </section>
     <!-- ______________________________________________________________________________________________ -->
-    <!-- ______________________________________________________________________________________________ -->
+    <!-- ============================================================================================== -->
+    <!-- LINKS AND BUTTONS SECTION -->
+    <!-- ============================================================================================== -->
     <section class="mb-10">
       <Heading htmlheading="h2" size="large">Links og buttons</Heading>
-      <div class="flex-col">
-        <div class="bg-accent-3-400 p-4">
-          <Heading htmlheading="h3" size="medium">Links</Heading>
+
+      <!-- _____________________________ SQUARE BUTTONS _____________________________ -->
+      <div class="mb-12">
+        <div class="bg-accent-3-400 p-6 rounded-t-lg">
+          <Heading htmlheading="h3" size="medium">Square Buttons</Heading>
         </div>
-        <Text teksttype="brødtekst">
-          <Link href="#">Default link: </Link>Default linket er en del af en
-          tekst, og burde gerne fungere som et <Link href="#">link</Link> i en paragraf.
-        </Text>
+        <div class="bg-gray-50 p-6 rounded-b-lg">
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8"
+          >
+            <!-- Accent 1 - Square -->
+            <div class="flex flex-col items-center space-y-4">
+              <Heading htmlheading="h4" size="small">Accent 1</Heading>
+              <div class="flex flex-col gap-4 w-full items-center">
+                <Button variant="accent1" size="sm">Small</Button>
+                <Button variant="accent1" size="md">Medium</Button>
+                <Button variant="accent1" size="lg">Large</Button>
+              </div>
+            </div>
 
-        <!-- Matrix: for each accent (1..5) show sizes (sm,md,lg) with text-only, icon-only, icon+face -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-          <!-- Accent 1 -->
-          <div>
+            <!-- Accent 2 - Square -->
+            <div class="flex flex-col items-center space-y-4">
+              <Heading htmlheading="h4" size="small">Accent 2</Heading>
+              <div class="flex flex-col gap-4 w-full items-center">
+                <Button variant="accent2" size="sm">Small</Button>
+                <Button variant="accent2" size="md">Medium</Button>
+                <Button variant="accent2" size="lg">Large</Button>
+              </div>
+            </div>
+
+            <!-- Accent 3 - Square -->
+            <div class="flex flex-col items-center space-y-4">
+              <Heading htmlheading="h4" size="small">Accent 3</Heading>
+              <div class="flex flex-col gap-4 w-full items-center">
+                <Button variant="accent3" size="sm">Small</Button>
+                <Button variant="accent3" size="md">Medium</Button>
+                <Button variant="accent3" size="lg">Large</Button>
+              </div>
+            </div>
+
+            <!-- Accent 4 - Square -->
+            <div class="flex flex-col items-center space-y-4">
+              <Heading htmlheading="h4" size="small">Accent 4</Heading>
+              <div class="flex flex-col gap-4 w-full items-center">
+                <Button variant="accent4" size="sm">Small</Button>
+                <Button variant="accent4" size="md">Medium</Button>
+                <Button variant="accent4" size="lg">Large</Button>
+              </div>
+            </div>
+
+            <!-- Accent 5 - Square -->
+            <div class="flex flex-col items-center space-y-4">
+              <Heading htmlheading="h4" size="small">Accent 5</Heading>
+              <div class="flex flex-col gap-4 w-full items-center">
+                <Button variant="accent5" size="sm">Small</Button>
+                <Button variant="accent5" size="md">Medium</Button>
+                <Button variant="accent5" size="lg">Large</Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- _____________________________ SQUARE BUTTONS WITH ICONS _____________________________ -->
+      <div class="flex-col mb-8">
+        <div class="bg-accent-1-400 p-4">
+          <Heading htmlheading="h3" size="medium"
+            >Square Buttons - With Icons (Hardcoded Colors)</Heading
+          >
+        </div>
+        <Text teksttype="brødtekst"
+          >Icon colors are preserved from original SVG files:</Text
+        >
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mt-4">
+          <!-- Accent 1 with icons -->
+          <div class="flex flex-col items-center">
             <Heading htmlheading="h4" size="small">Accent 1</Heading>
-            <div class="flex flex-col gap-3 mt-2">
-              <div class="flex items-center gap-3">
-                <Link href="#" variant="accent1" size="sm">Small</Link>
-                <Link href="#" variant="accent1" size="sm"
-                  ><Play slot="icon" /></Link
+            <div class="flex flex-col gap-3 mt-2 w-full">
+              <div class="flex items-center justify-center gap-3 flex-wrap">
+                <Button variant="accent1" size="sm" svg_accent="none"
+                  ><Play slot="icon" /></Button
                 >
-                <Link href="#" variant="accent1" size="sm"
-                  ><Face1 slot="icon" /><Play /></Link
-                >
-              </div>
-              <div class="flex items-center gap-3">
-                <Link href="#" variant="accent1" size="md">Medium</Link>
-                <Link href="#" variant="accent1" size="md"
-                  ><Play slot="icon" /></Link
-                >
-                <Link href="#" variant="accent1" size="md"
-                  ><Face1 slot="icon" /><Play /></Link
+                <Button variant="accent1" size="sm" svg_accent="none"
+                  ><Face1 slot="icon" /><Play /></Button
                 >
               </div>
-              <div class="flex items-center gap-3">
-                <Link href="#" variant="accent1" size="lg">Large</Link>
-                <Link href="#" variant="accent1" size="lg"
-                  ><Play slot="icon" /></Link
+              <div class="flex items-center justify-center gap-3 flex-wrap">
+                <Button variant="accent1" size="md" svg_accent="none"
+                  ><Play slot="icon" /></Button
                 >
-                <Link href="#" variant="accent1" size="lg"
-                  ><Face1 slot="icon" /><Play /></Link
+                <Button variant="accent1" size="md" svg_accent="none"
+                  ><Face1 slot="icon" /><Play /></Button
+                >
+              </div>
+              <div class="flex items-center justify-center gap-3 flex-wrap">
+                <Button variant="accent1" size="lg" svg_accent="none"
+                  ><Play slot="icon" /></Button
+                >
+                <Button variant="accent1" size="lg" svg_accent="none"
+                  ><Face1 slot="icon" /><Play /></Button
                 >
               </div>
             </div>
           </div>
 
-          <!-- Accent 2 -->
-          <div>
+          <!-- Accent 2 with icons -->
+          <div class="flex flex-col items-center">
             <Heading htmlheading="h4" size="small">Accent 2</Heading>
-            <div class="flex flex-col gap-3 mt-2">
-              <div class="flex items-center gap-3">
-                <Link href="#" variant="accent2" size="sm">Small</Link>
-                <Link href="#" variant="accent2" size="sm"
-                  ><Play slot="icon" /></Link
+            <div class="flex flex-col gap-3 mt-2 w-full">
+              <div class="flex items-center justify-center gap-3 flex-wrap">
+                <Button variant="accent2" size="sm" svg_accent="none"
+                  ><Play slot="icon" /></Button
                 >
-                <Link href="#" variant="accent2" size="sm"
-                  ><Face2 slot="icon" /><Play /></Link
-                >
-              </div>
-              <div class="flex items-center gap-3">
-                <Link href="#" variant="accent2" size="md">Medium</Link>
-                <Link href="#" variant="accent2" size="md"
-                  ><Play slot="icon" /></Link
-                >
-                <Link href="#" variant="accent2" size="md"
-                  ><Face2 slot="icon" /><Play /></Link
+                <Button variant="accent2" size="sm" svg_accent="none"
+                  ><Face2 slot="icon" /><Play /></Button
                 >
               </div>
-              <div class="flex items-center gap-3">
-                <Link href="#" variant="accent2" size="lg">Large</Link>
-                <Link href="#" variant="accent2" size="lg"
-                  ><Play slot="icon" /></Link
+              <div class="flex items-center justify-center gap-3 flex-wrap">
+                <Button variant="accent2" size="md" svg_accent="none"
+                  ><Play slot="icon" /></Button
                 >
-                <Link href="#" variant="accent2" size="lg"
-                  ><Face2 slot="icon" /><Play /></Link
+                <Button variant="accent2" size="md" svg_accent="none"
+                  ><Face2 slot="icon" /><Play /></Button
+                >
+              </div>
+              <div class="flex items-center justify-center gap-3 flex-wrap">
+                <Button variant="accent2" size="lg" svg_accent="none"
+                  ><Play slot="icon" /></Button
+                >
+                <Button variant="accent2" size="lg" svg_accent="none"
+                  ><Face2 slot="icon" /><Play /></Button
                 >
               </div>
             </div>
           </div>
 
-          <!-- Accent 3 -->
-          <div>
+          <!-- Accent 3 with icons -->
+          <div class="flex flex-col items-center">
             <Heading htmlheading="h4" size="small">Accent 3</Heading>
-            <div class="flex flex-col gap-3 mt-2">
-              <div class="flex items-center gap-3">
-                <Link href="#" variant="accent3" size="sm">Small</Link>
-                <Link href="#" variant="accent3" size="sm"
-                  ><Play slot="icon" /></Link
+            <div class="flex flex-col gap-3 mt-2 w-full">
+              <div class="flex items-center justify-center gap-3 flex-wrap">
+                <Button variant="accent3" size="sm" svg_accent="none"
+                  ><Play slot="icon" /></Button
                 >
-                <Link href="#" variant="accent3" size="sm"
-                  ><Face3 slot="icon" /><Play /></Link
-                >
-              </div>
-              <div class="flex items-center gap-3">
-                <Link href="#" variant="accent3" size="md">Medium</Link>
-                <Link href="#" variant="accent3" size="md"
-                  ><Play slot="icon" /></Link
-                >
-                <Link href="#" variant="accent3" size="md"
-                  ><Face3 slot="icon" /><Play /></Link
+                <Button variant="accent3" size="sm" svg_accent="none"
+                  ><Face3 slot="icon" /><Play /></Button
                 >
               </div>
-              <div class="flex items-center gap-3">
-                <Link href="#" variant="accent3" size="lg">Large</Link>
-                <Link href="#" variant="accent3" size="lg"
-                  ><Play slot="icon" /></Link
+              <div class="flex items-center justify-center gap-3 flex-wrap">
+                <Button variant="accent3" size="md" svg_accent="none"
+                  ><Play slot="icon" /></Button
                 >
-                <Link href="#" variant="accent3" size="lg"
-                  ><Face3 slot="icon" /><Play /></Link
+                <Button variant="accent3" size="md" svg_accent="none"
+                  ><Face3 slot="icon" /><Play /></Button
+                >
+              </div>
+              <div class="flex items-center justify-center gap-3 flex-wrap">
+                <Button variant="accent3" size="lg" svg_accent="none"
+                  ><Play slot="icon" /></Button
+                >
+                <Button variant="accent3" size="lg" svg_accent="none"
+                  ><Face3 slot="icon" /><Play /></Button
                 >
               </div>
             </div>
           </div>
 
-          <!-- Accent 4 -->
-          <div>
+          <!-- Accent 4 with icons -->
+          <div class="flex flex-col items-center">
             <Heading htmlheading="h4" size="small">Accent 4</Heading>
-            <div class="flex flex-col gap-3 mt-2">
-              <div class="flex items-center gap-3">
-                <Link href="#" variant="accent4" size="sm">Small</Link>
-                <Link href="#" variant="accent4" size="sm"
-                  ><Play slot="icon" /></Link
+            <div class="flex flex-col gap-3 mt-2 w-full">
+              <div class="flex items-center justify-center gap-3 flex-wrap">
+                <Button variant="accent4" size="sm" svg_accent="none"
+                  ><Play slot="icon" /></Button
                 >
-                <Link href="#" variant="accent4" size="sm"
-                  ><Face4 slot="icon" /><Play /></Link
-                >
-              </div>
-              <div class="flex items-center gap-3">
-                <Link href="#" variant="accent4" size="md">Medium</Link>
-                <Link href="#" variant="accent4" size="md"
-                  ><Play slot="icon" /></Link
-                >
-                <Link href="#" variant="accent4" size="md"
-                  ><Face4 slot="icon" /><Play /></Link
+                <Button variant="accent4" size="sm" svg_accent="none"
+                  ><Face4 slot="icon" /><Play /></Button
                 >
               </div>
-              <div class="flex items-center gap-3">
-                <Link href="#" variant="accent4" size="lg">Large</Link>
-                <Link href="#" variant="accent4" size="lg"
-                  ><Play slot="icon" /></Link
+              <div class="flex items-center justify-center gap-3 flex-wrap">
+                <Button variant="accent4" size="md" svg_accent="none"
+                  ><Play slot="icon" /></Button
                 >
-                <Link href="#" variant="accent4" size="lg"
-                  ><Face4 slot="icon" /><Play /></Link
+                <Button variant="accent4" size="md" svg_accent="none"
+                  ><Face4 slot="icon" /><Play /></Button
+                >
+              </div>
+              <div class="flex items-center justify-center gap-3 flex-wrap">
+                <Button variant="accent4" size="lg" svg_accent="none"
+                  ><Play slot="icon" /></Button
+                >
+                <Button variant="accent4" size="lg" svg_accent="none"
+                  ><Face4 slot="icon" /><Play /></Button
                 >
               </div>
             </div>
           </div>
 
-          <!-- Accent 5 -->
-          <div>
+          <!-- Accent 5 with icons -->
+          <div class="flex flex-col items-center">
             <Heading htmlheading="h4" size="small">Accent 5</Heading>
-            <div class="flex flex-col gap-3 mt-2">
-              <div class="flex items-center gap-3">
-                <Link href="#" variant="accent5" size="sm">Small</Link>
-                <Link href="#" variant="accent5" size="sm"
-                  ><Play slot="icon" /></Link
+            <div class="flex flex-col gap-3 mt-2 w-full">
+              <div class="flex items-center justify-center gap-3 flex-wrap">
+                <Button variant="accent5" size="sm" svg_accent="none"
+                  ><Play slot="icon" /></Button
                 >
-                <Link href="#" variant="accent5" size="sm"
-                  ><Face5 slot="icon" /><Play /></Link
-                >
-              </div>
-              <div class="flex items-center gap-3">
-                <Link href="#" variant="accent5" size="md">Medium</Link>
-                <Link href="#" variant="accent5" size="md"
-                  ><Play slot="icon" /></Link
-                >
-                <Link href="#" variant="accent5" size="md"
-                  ><Face5 slot="icon" /><Play /></Link
+                <Button variant="accent5" size="sm" svg_accent="none"
+                  ><Face5 slot="icon" /><Play /></Button
                 >
               </div>
-              <div class="flex items-center gap-3">
-                <Link href="#" variant="accent5" size="lg">Large</Link>
-                <Link href="#" variant="accent5" size="lg"
-                  ><Play slot="icon" /></Link
+              <div class="flex items-center justify-center gap-3 flex-wrap">
+                <Button variant="accent5" size="md" svg_accent="none"
+                  ><Play slot="icon" /></Button
                 >
-                <Link href="#" variant="accent5" size="lg"
-                  ><Face5 slot="icon" /><Play /></Link
+                <Button variant="accent5" size="md" svg_accent="none"
+                  ><Face5 slot="icon" /><Play /></Button
+                >
+              </div>
+              <div class="flex items-center justify-center gap-3 flex-wrap">
+                <Button variant="accent5" size="lg" svg_accent="none"
+                  ><Play slot="icon" /></Button
+                >
+                <Button variant="accent5" size="lg" svg_accent="none"
+                  ><Face5 slot="icon" /><Play /></Button
                 >
               </div>
             </div>
@@ -277,173 +337,341 @@ import Face5 from "../assets/buttons/face_5.svg";
         </div>
       </div>
 
-      <!-- ___________________________ -->
-      <div class="flex-col">
-        <div class="bg-accent-4-400 p-4 mt-10">
-          <Heading htmlheading="h3" size="medium">Buttons</Heading>
+      <!-- _____________________________ ROUND BUTTONS _____________________________ -->
+      <div class="mb-12">
+        <div class="bg-accent-4-400 p-6 rounded-t-lg">
+          <Heading htmlheading="h3" size="medium">Round Icon Buttons</Heading>
         </div>
+        <div class="bg-gray-50 p-6 rounded-b-lg">
+          <Text teksttype="brødtekst" stylingclasses="mb-6 text-center"
+            >Round buttons automatically use reversed color scheme (lighter SVG
+            on darker background)</Text
+          >
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8"
+          >
+            <!-- Accent 1 - Round -->
+            <div class="flex flex-col items-center space-y-4">
+              <Heading htmlheading="h4" size="small">Accent 1</Heading>
+              <div class="flex items-center justify-center gap-4 flex-wrap">
+                <Button variant="accent1" shape="round" size="sm"
+                  ><Arrowleft /></Button
+                >
+                <Button variant="accent1" shape="round" size="sm"
+                  ><Arrowright /></Button
+                >
+                <Button variant="accent1" shape="round" size="md"
+                  ><Arrowleft /></Button
+                >
+                <Button variant="accent1" shape="round" size="md"
+                  ><Arrowright /></Button
+                >
+                <Button variant="accent1" shape="round" size="lg"
+                  ><Arrowleft /></Button
+                >
+                <Button variant="accent1" shape="round" size="lg"
+                  ><Arrowright /></Button
+                >
+              </div>
+            </div>
 
-        <!-- Matrix: for each accent (1..5) show sizes (sm,md,lg) with text-only, icon-only, icon+face -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-          <!-- _____________________________________Accent 1_____________________________________ -->
-          <div>
-            <Heading htmlheading="h4" size="small">Accent 1</Heading>
-            <div class="flex flex-col gap-3 mt-2">
-              <div class="flex items-center gap-3">
-                <Button variant="accent1" size="sm">Small</Button>
-                <Button variant="accent1" size="sm"><Play slot="icon" /></Button
+            <!-- Accent 2 - Round -->
+            <div class="flex flex-col items-center space-y-4">
+              <Heading htmlheading="h4" size="small">Accent 2</Heading>
+              <div class="flex items-center justify-center gap-4 flex-wrap">
+                <Button variant="accent2" shape="round" size="sm"
+                  ><Heart /></Button
                 >
-                <Button variant="accent1" size="sm"
-                  ><Face1 slot="icon" /><Play /></Button
+                <Button variant="accent2" shape="round" size="md"
+                  ><Heart /></Button
                 >
-              </div>
-              <div class="flex items-center gap-3">
-                <Button variant="accent1" size="md">Medium</Button>
-                <Button variant="accent1" size="md"><Play slot="icon" /></Button
-                >
-                <Button variant="accent1" size="md"
-                  ><Face1 slot="icon" /><Play /></Button
+                <Button variant="accent2" shape="round" size="lg"
+                  ><Heart /></Button
                 >
               </div>
-              <div class="flex items-center gap-3">
-                <Button variant="accent1" size="lg">Large</Button>
-                <Button variant="accent1" size="lg"><Play slot="icon" /></Button
+            </div>
+
+            <!-- Accent 3 - Round -->
+            <div class="flex flex-col items-center space-y-4">
+              <Heading htmlheading="h4" size="small">Accent 3</Heading>
+              <div class="flex items-center justify-center gap-4 flex-wrap">
+                <Button variant="accent3" shape="round" size="sm"
+                  ><Play /></Button
                 >
-                <Button variant="accent1" size="lg"
-                  ><Face1 slot="icon" /><Play /></Button
+                <Button variant="accent3" shape="round" size="md"
+                  ><Play /></Button
+                >
+                <Button variant="accent3" shape="round" size="lg"
+                  ><Play /></Button
+                >
+              </div>
+            </div>
+
+            <!-- Accent 4 - Round -->
+            <div class="flex flex-col items-center space-y-4">
+              <Heading htmlheading="h4" size="small">Accent 4</Heading>
+              <div class="flex items-center justify-center gap-4 flex-wrap">
+                <Button variant="accent4" shape="round" size="sm"
+                  ><Again /></Button
+                >
+                <Button variant="accent4" shape="round" size="md"
+                  ><Again /></Button
+                >
+                <Button variant="accent4" shape="round" size="lg"
+                  ><Again /></Button
+                >
+              </div>
+            </div>
+
+            <!-- Accent 5 - Round -->
+            <div class="flex flex-col items-center space-y-4">
+              <Heading htmlheading="h4" size="small">Accent 5</Heading>
+              <div class="flex items-center justify-center gap-4 flex-wrap">
+                <Button variant="accent5" shape="round" size="sm"
+                  ><Mag /></Button
+                >
+                <Button variant="accent5" shape="round" size="md"
+                  ><Mag /></Button
+                >
+                <Button variant="accent5" shape="round" size="lg"
+                  ><Mag /></Button
                 >
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <!-- _____________________________ LINKS _____________________________ -->
+      <div class="mb-12">
+        <div class="bg-accent-2-400 p-6 rounded-t-lg">
+          <Heading htmlheading="h3" size="medium">Links</Heading>
+        </div>
+        <div class="bg-gray-50 p-6 rounded-b-lg">
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8"
+          >
+            <!-- Accent 1 - Links -->
+            <div class="flex flex-col items-center space-y-4">
+              <Heading htmlheading="h4" size="small">Accent 1</Heading>
+              <div class="flex flex-col gap-4 w-full items-center">
+                <Link href="#" variant="accent1" size="sm">Small Link</Link>
+                <Link href="#" variant="accent1" size="md">Medium Link</Link>
+                <Link href="#" variant="accent1" size="lg">Large Link</Link>
+              </div>
+            </div>
 
-          <!--_____________________________________Accent 2_____________________________________ -->
-          <div>
-            <Heading htmlheading="h4" size="small">Accent 2</Heading>
-            <div class="flex flex-col gap-3 mt-2">
-              <div class="flex items-center gap-3">
-                <Button variant="accent2" size="sm">Small</Button>
-                <Button variant="accent2" size="sm"><Play slot="icon" /></Button
-                >
-                <Button variant="accent2" size="sm"
-                  ><Face2 slot="icon" /><Play /></Button
-                >
+            <!-- Accent 2 - Links -->
+            <div class="flex flex-col items-center space-y-4">
+              <Heading htmlheading="h4" size="small">Accent 2</Heading>
+              <div class="flex flex-col gap-4 w-full items-center">
+                <Link href="#" variant="accent2" size="sm">Small Link</Link>
+                <Link href="#" variant="accent2" size="md">Medium Link</Link>
+                <Link href="#" variant="accent2" size="lg">Large Link</Link>
               </div>
-              <div class="flex items-center gap-3">
-                <Button variant="accent2" size="md">Medium</Button>
-                <Button variant="accent2" size="md"><Play slot="icon" /></Button
-                >
-                <Button variant="accent2" size="md"
-                  ><Face2 slot="icon" /><Play /></Button
-                >
+            </div>
+
+            <!-- Accent 3 - Links -->
+            <div class="flex flex-col items-center space-y-4">
+              <Heading htmlheading="h4" size="small">Accent 3</Heading>
+              <div class="flex flex-col gap-4 w-full items-center">
+                <Link href="#" variant="accent3" size="sm">Small Link</Link>
+                <Link href="#" variant="accent3" size="md">Medium Link</Link>
+                <Link href="#" variant="accent3" size="lg">Large Link</Link>
               </div>
-              <div class="flex items-center gap-3">
-                <Button variant="accent2" size="lg">Large</Button>
-                <Button variant="accent2" size="lg"><Play slot="icon" /></Button
-                >
-                <Button variant="accent2" size="lg"
-                  ><Face2 slot="icon" /><Play /></Button
-                >
+            </div>
+
+            <!-- Accent 4 - Links -->
+            <div class="flex flex-col items-center space-y-4">
+              <Heading htmlheading="h4" size="small">Accent 4</Heading>
+              <div class="flex flex-col gap-4 w-full items-center">
+                <Link href="#" variant="accent4" size="sm">Small Link</Link>
+                <Link href="#" variant="accent4" size="md">Medium Link</Link>
+                <Link href="#" variant="accent4" size="lg">Large Link</Link>
+              </div>
+            </div>
+
+            <!-- Accent 5 - Links -->
+            <div class="flex flex-col items-center space-y-4">
+              <Heading htmlheading="h4" size="small">Accent 5</Heading>
+              <div class="flex flex-col gap-4 w-full items-center">
+                <Link href="#" variant="accent5" size="sm">Small Link</Link>
+                <Link href="#" variant="accent5" size="md">Medium Link</Link>
+                <Link href="#" variant="accent5" size="lg">Large Link</Link>
               </div>
             </div>
           </div>
+        </div>
+      </div>
 
-          <!-- _____________________________________Accent 3_____________________________________ -->
-          <div>
-            <Heading htmlheading="h4" size="small">Accent 3</Heading>
-            <div class="flex flex-col gap-3 mt-2">
-              <div class="flex items-center gap-3">
-                <Button variant="accent3" size="sm">Small</Button>
-                <Button variant="accent3" size="sm"><Play slot="icon" /></Button
-                >
-                <Button variant="accent3" size="sm"
-                  ><Face3 slot="icon" /><Play /></Button
-                >
-              </div>
-              <div class="flex items-center gap-3">
-                <Button variant="accent3" size="md">Medium</Button>
-                <Button variant="accent3" size="md"><Play slot="icon" /></Button
-                >
-                <Button variant="accent3" size="md"
-                  ><Face3 slot="icon" /><Play /></Button
-                >
-              </div>
-              <div class="flex items-center gap-3">
-                <Button variant="accent3" size="lg">Large</Button>
-                <Button variant="accent3" size="lg"><Play slot="icon" /></Button
-                >
-                <Button variant="accent3" size="lg"
-                  ><Face3 slot="icon" /><Play /></Button
-                >
+      <!-- _____________________________ LINKS WITH ICONS _____________________________ -->
+      <div class="mb-12">
+        <div class="bg-accent-3-400 p-6 rounded-t-lg">
+          <Heading htmlheading="h3" size="medium">Links - With Icons</Heading>
+        </div>
+        <div class="bg-gray-50 p-6 rounded-b-lg">
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            <!-- Accent 1 with icons -->
+            <div class="flex flex-col items-center">
+              <Heading htmlheading="h4" size="small">Accent 1</Heading>
+              <div class="flex flex-col gap-3 mt-2 w-full">
+                <div class="flex items-center justify-center gap-3 flex-wrap">
+                  <Link href="#" variant="accent1" size="sm"
+                    ><Arrowright slot="icon" /></Link
+                  >
+                  <Link href="#" variant="accent1" size="sm"
+                    ><Arrowright slot="icon" />Link Text</Link
+                  >
+                </div>
+                <div class="flex items-center justify-center gap-3 flex-wrap">
+                  <Link href="#" variant="accent1" size="md"
+                    ><Arrowright slot="icon" /></Link
+                  >
+                  <Link href="#" variant="accent1" size="md"
+                    ><Arrowright slot="icon" />Link Text</Link
+                  >
+                </div>
+                <div class="flex items-center justify-center gap-3 flex-wrap">
+                  <Link href="#" variant="accent1" size="lg"
+                    ><Arrowright slot="icon" /></Link
+                  >
+                  <Link href="#" variant="accent1" size="lg"
+                    ><Arrowright slot="icon" />Link Text</Link
+                  >
+                </div>
               </div>
             </div>
-          </div>
 
-          <!-- _____________________________________Accent 4_____________________________________ -->
-          <div>
-            <Heading htmlheading="h4" size="small">Accent 4</Heading>
-            <div class="flex flex-col gap-3 mt-2">
-              <div class="flex items-center gap-3">
-                <Button variant="accent4" size="sm">Small</Button>
-                <Button variant="accent4" size="sm"><Play slot="icon" /></Button
-                >
-                <Button variant="accent4" size="sm"
-                  ><Face4 slot="icon" /><Play /></Button
-                >
-              </div>
-              <div class="flex items-center gap-3">
-                <Button variant="accent4" size="md">Medium</Button>
-                <Button variant="accent4" size="md"><Play slot="icon" /></Button
-                >
-                <Button variant="accent4" size="md"
-                  ><Face4 slot="icon" /><Play /></Button
-                >
-              </div>
-              <div class="flex items-center gap-3">
-                <Button variant="accent4" size="lg">Large</Button>
-                <Button variant="accent4" size="lg"><Play slot="icon" /></Button
-                >
-                <Button variant="accent4" size="lg"
-                  ><Face4 slot="icon" /><Play /></Button
-                >
+            <!-- Accent 2 with icons -->
+            <div class="flex flex-col items-center">
+              <Heading htmlheading="h4" size="small">Accent 2</Heading>
+              <div class="flex flex-col gap-3 mt-2 w-full">
+                <div class="flex items-center justify-center gap-3 flex-wrap">
+                  <Link href="#" variant="accent2" size="sm"
+                    ><Heart slot="icon" /></Link
+                  >
+                  <Link href="#" variant="accent2" size="sm"
+                    ><Heart slot="icon" />Link Text</Link
+                  >
+                </div>
+                <div class="flex items-center justify-center gap-3 flex-wrap">
+                  <Link href="#" variant="accent2" size="md"
+                    ><Heart slot="icon" /></Link
+                  >
+                  <Link href="#" variant="accent2" size="md"
+                    ><Heart slot="icon" />Link Text</Link
+                  >
+                </div>
+                <div class="flex items-center justify-center gap-3 flex-wrap">
+                  <Link href="#" variant="accent2" size="lg"
+                    ><Heart slot="icon" /></Link
+                  >
+                  <Link href="#" variant="accent2" size="lg"
+                    ><Heart slot="icon" />Link Text</Link
+                  >
+                </div>
               </div>
             </div>
-          </div>
 
-          <!-- _____________________________________Accent 5_____________________________________ -->
-          <div>
-            <Heading htmlheading="h4" size="small">Accent 5</Heading>
-            <div class="flex flex-col gap-3 mt-2">
-              <div class="flex items-center gap-3">
-                <Button variant="accent5" size="sm">Small</Button>
-                <Button variant="accent5" size="sm"><Play slot="icon" /></Button
-                >
-                <Button variant="accent5" size="sm"
-                  ><Face5 slot="icon" /><Play /></Button
-                >
+            <!-- Accent 3 with icons -->
+            <div class="flex flex-col items-center">
+              <Heading htmlheading="h4" size="small">Accent 3</Heading>
+              <div class="flex flex-col gap-3 mt-2 w-full">
+                <div class="flex items-center justify-center gap-3 flex-wrap">
+                  <Link href="#" variant="accent3" size="sm"
+                    ><Play slot="icon" /></Link
+                  >
+                  <Link href="#" variant="accent3" size="sm"
+                    ><Play slot="icon" />Link Text</Link
+                  >
+                </div>
+                <div class="flex items-center justify-center gap-3 flex-wrap">
+                  <Link href="#" variant="accent3" size="md"
+                    ><Play slot="icon" /></Link
+                  >
+                  <Link href="#" variant="accent3" size="md"
+                    ><Play slot="icon" />Link Text</Link
+                  >
+                </div>
+                <div class="flex items-center justify-center gap-3 flex-wrap">
+                  <Link href="#" variant="accent3" size="lg"
+                    ><Play slot="icon" /></Link
+                  >
+                  <Link href="#" variant="accent3" size="lg"
+                    ><Play slot="icon" />Link Text</Link
+                  >
+                </div>
               </div>
-              <div class="flex items-center gap-3">
-                <Button variant="accent5" size="md">Medium</Button>
-                <Button variant="accent5" size="md"><Play slot="icon" /></Button
-                >
-                <Button variant="accent5" size="md"
-                  ><Face5 slot="icon" /><Play /></Button
-                >
+            </div>
+
+            <!-- Accent 4 with icons -->
+            <div class="flex flex-col items-center">
+              <Heading htmlheading="h4" size="small">Accent 4</Heading>
+              <div class="flex flex-col gap-3 mt-2 w-full">
+                <div class="flex items-center justify-center gap-3 flex-wrap">
+                  <Link href="#" variant="accent4" size="sm"
+                    ><Again slot="icon" /></Link
+                  >
+                  <Link href="#" variant="accent4" size="sm"
+                    ><Again slot="icon" />Link Text</Link
+                  >
+                </div>
+                <div class="flex items-center justify-center gap-3 flex-wrap">
+                  <Link href="#" variant="accent4" size="md"
+                    ><Again slot="icon" /></Link
+                  >
+                  <Link href="#" variant="accent4" size="md"
+                    ><Again slot="icon" />Link Text</Link
+                  >
+                </div>
+                <div class="flex items-center justify-center gap-3 flex-wrap">
+                  <Link href="#" variant="accent4" size="lg"
+                    ><Again slot="icon" /></Link
+                  >
+                  <Link href="#" variant="accent4" size="lg"
+                    ><Again slot="icon" />Link Text</Link
+                  >
+                </div>
               </div>
-              <div class="flex items-center gap-3">
-                <Button variant="accent5" size="lg">Large</Button>
-                <Button variant="accent5" size="lg"><Play slot="icon" /></Button
-                >
-                <Button variant="accent5" size="lg"
-                  ><Face5 slot="icon" /><Play /></Button
-                >
+            </div>
+
+            <!-- Accent 5 with icons -->
+            <div class="flex flex-col items-center">
+              <Heading htmlheading="h4" size="small">Accent 5</Heading>
+              <div class="flex flex-col gap-3 mt-2 w-full">
+                <div class="flex items-center justify-center gap-3 flex-wrap">
+                  <Link href="#" variant="accent5" size="sm"
+                    ><Mag slot="icon" /></Link
+                  >
+                  <Link href="#" variant="accent5" size="sm"
+                    ><Mag slot="icon" />Link Text</Link
+                  >
+                </div>
+                <div class="flex items-center justify-center gap-3 flex-wrap">
+                  <Link href="#" variant="accent5" size="md"
+                    ><Mag slot="icon" /></Link
+                  >
+                  <Link href="#" variant="accent5" size="md"
+                    ><Mag slot="icon" />Link Text</Link
+                  >
+                </div>
+                <div class="flex items-center justify-center gap-3 flex-wrap">
+                  <Link href="#" variant="accent5" size="lg"
+                    ><Mag slot="icon" /></Link
+                  >
+                  <Link href="#" variant="accent5" size="lg"
+                    ><Mag slot="icon" />Link Text</Link
+                  >
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- ______________________________________________________________________________________________ -->
-    <!-- ______________________________________________________________________________________________ -->
+
+    <!-- ============================================================================================== -->
+    <!-- COLORS SECTION -->
+    <!-- ============================================================================================== -->
     <section>
       <div class="flex-col">
         <div class="bg-accent-5-400 p-4 mt-10">
@@ -451,6 +679,6 @@ import Face5 from "../assets/buttons/face_5.svg";
         </div>
       </div>
     </section>
-    <!-- ______________________________________________________________________________________________ -->
+    <!-- ============================================================================================== -->
   </main>
 </MainLayout>
