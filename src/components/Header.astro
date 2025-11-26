@@ -1,73 +1,194 @@
 ---
-const pathname = new URL(Astro.request.url).pathname;
-const currentPath = pathname.slice(1); // remove the first "/"
+// ...existing code...
+import Button from "../components/Button.astro";
+import HeaderimageUrl from "../assets/buttons/header_image.svg?url";
+import LogoUrl from "../assets/logo1.svg?url";
+import Again from "../assets/buttons/again.svg";
+import Heart from "../assets/buttons/heart.svg";
+import Mag from "../assets/buttons/magnifier.svg";
+import Sun from "../assets/buttons/sun.svg";
+import Moon from "../assets/buttons/moon.svg";
+const currentPath = Astro.url.pathname.replace(/^\//, "");
 ---
 
-<header x-data="{ showmenu: false }" class="">
-  <div
-    id="navbar"
-    class="container mx-auto p-4 flex flex-row justify-between items-center"
-  >
-    <div id="logo" class="">
-      <a href="#" class="font-display text-4xl"
-        >Astro-Tailwind starter - udvidet udgave E25</a
+<header
+  x-data="{ showmenu: false, themeOn: false, showSearch: false }"
+  class="relative w-full h-[28vh] min-h-[120px] flex items-center justify-center overflow-hidden"
+  style="z-index: 10;"
+>
+  <div class="absolute inset-0 flex items-end justify-center">
+    <div class="relative inline-block h-full">
+      <img
+        src={HeaderimageUrl}
+        alt="Header Background"
+        class="h-full w-auto pointer-events-none select-none -z-10"
+      />
+
+      <div
+        class="absolute inset-0 flex items-center justify-between mx-[10%] mb-[10vh] pointer-events-auto"
       >
+        <a href="/" class="flex items-center gap-2 shrink-0">
+          <img
+            src={LogoUrl}
+            alt="Logo"
+            class="h-10 sm:h-12 md:h-14 transition-all duration-200"
+          />
+        </a>
+
+        <button
+          x-on:click="themeOn = !themeOn"
+          :aria-pressed="themeOn"
+          aria-label="Toggle theme"
+          class="relative inline-flex items-center p-1 rounded-full transition-colors duration-300 focus:outline-none
+                 h-10 w-20 sm:h-12 sm:w-24 md:h-14 md:w-28"
+          :class="themeOn ? 'bg-accent-3-200' : 'bg-accent-5-100'"
+        >
+          <span
+            class="pointer-events-none rounded-full shadow-lg transform ring-0 transition-transform duration-300 ease-in-out flex items-center justify-center
+                   h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12"
+            :class="{ 
+                'bg-accent-5-300': themeOn, 
+                'bg-accent-3-400': !themeOn, 
+                'translate-x-10 sm:translate-x-12 md:translate-x-14': themeOn, 
+                'translate-x-0': !themeOn 
+            }"
+          >
+            <Moon
+              class="transition-opacity duration-300 h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-primary"
+              x-show="themeOn"
+              x-transition:enter="transition ease-out duration-200"
+              x-transition:enter-start="opacity-0 -rotate-90 scale-50"
+              x-transition:enter-end="opacity-100 rotate-0 scale-100"
+            />
+            <Sun
+              class="transition-opacity duration-300 h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-accent-3-100"
+              x-show="!themeOn"
+              x-transition:enter="transition ease-out duration-200"
+              x-transition:enter-start="opacity-0 rotate-90 scale-50"
+              x-transition:enter-end="opacity-100 rotate-0 scale-100"
+            />
+          </span>
+        </button>
+
+        <div class="hidden lg:flex items-center gap-3 shrink-0">
+          <Button
+            x-on:click="showSearch = !showSearch"
+            variant="accent5"
+            shape="round"
+            size="md"
+            class="h-10 sm:h-12 md:h-14 p-0 flex items-center justify-center"
+            ><Mag class="h-full w-auto" /></Button
+          >
+          <Button
+            x-on:click="location.href='/liked'"
+            variant="accent2"
+            shape="round"
+            size="md"
+            class="h-10 sm:h-12 md:h-14 p-0 flex items-center justify-center"
+            ><Heart class="h-full w-auto" /></Button
+          >
+          <Button
+            x-on:click="console.log('watch again')"
+            variant="accent4"
+            shape="round"
+            size="md"
+            class="h-10 sm:h-12 md:h-14 p-0 flex items-center justify-center"
+            ><Again class="h-full w-auto" /></Button
+          >
+        </div>
+
+        <button
+          class="ml-2 lg:hidden p-0 flex items-center justify-center h-10 sm:h-12 md:h-14 w-10 sm:w-12 md:w-14 transition-all duration-200
+                 bg-accent-5-400 rounded-full"
+          x-on:click="showmenu = !showmenu"
+          aria-label="Open menu"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-auto h-10 sm:h-12 md:h-14 text-white"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+          </svg>
+        </button>
+      </div>
     </div>
-    <nav id="desktopmenu" class="hidden lg:block">
-      <ul class="flex flex-row gap-4">
-        <li class="">
-          <a href="/" class={currentPath === "" ? "italic font-bold" : "italic"}
-            >Forside</a
-          >
-        </li><!-- alternativt: lav et <a href="">Link</a>, hvis du ikke vil bruge Link.astro komponenten -->
-        <li class="">
-          <a
-            href="/komponentbibliotek/"
-            class={currentPath === "komponentbibliotek/"
-              ? "italic font-bold"
-              : "italic"}>Komponentbibliotek</a
-          >
-        </li>
-      </ul>
-    </nav>
-    <button id="burgermenu" class="lg:hidden" x-on:click="showmenu = ! showmenu"
-      ><svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        class="size-6"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
-      </svg>
-    </button>
   </div>
-  <nav
-    id="mobilmenu"
-    class="flex flex-col content-center"
-    x-show="showmenu"
-    x-transition
-    x-on:click="showmenu = false"
-    x-on:click.outside="showmenu = false"
-  >
-    <ul class="border-t-2 border-b-2 border-black">
-      <li class="text-center py-2">
-        <a href="/" class={currentPath === "" ? "italic font-bold" : "italic"}
-          >Forside</a
-        >
-      </li>
-      <li class="text-center py-2">
-        <a
-          href="/komponentbibliotek/"
-          class={currentPath === "komponentbibliotek/"
-            ? "italic font-bold"
-            : "italic"}>Komponentbibliotek</a
-        >
-      </li>
-    </ul>
-  </nav>
 </header>
+
+<div
+  class="absolute left-1/2 -translate-x-1/2 mt-2 w-full max-w-[90%] z-30"
+  style="top: 28vh; min-height: 120px; display: none;"
+  x-show="showSearch"
+  x-transition
+  x-on:click.outside="showSearch = false"
+>
+  <div class="mx-auto bg-white/95 border rounded-md border-black shadow-md p-3">
+    <input
+      type="search"
+      placeholder="Søg..."
+      class="w-full px-3 py-2 rounded-md border"
+    />
+  </div>
+</div>
+
+<nav
+  class="lg:hidden absolute left-1/2 -translate-x-1/2 mt-2 w-full max-w-[90%] z-20"
+  style="top: 28vh; min-height: 120px; display: none;"
+  x-show="showmenu"
+  x-transition
+  x-on:click.outside="showmenu = false"
+>
+  <ul
+    class="bg-white/95 border rounded-md border-black shadow-md overflow-hidden"
+  >
+    <li class="flex items-center justify-center py-3 border-b">
+      <span class="text-sm italic">Theme Toggle (Use Header)</span>
+    </li>
+    <li class="flex items-center justify-center gap-4 py-3 border-b">
+      <Button
+        x-on:click="showSearch = !showSearch; showmenu = false"
+        variant="accent5"
+        shape="round"
+        size="sm"
+        class="h-12 sm:h-14 p-0 flex items-center justify-center"
+        ><Mag class="h-full w-auto" /></Button
+      >
+      <Button
+        x-on:click="location.href='/liked'; showmenu = false"
+        variant="accent2"
+        shape="round"
+        size="sm"
+        class="h-12 sm:h-14 p-0 flex items-center justify-center"
+        ><Heart class="h-full w-auto" /></Button
+      >
+      <Button
+        x-on:click="console.log('watch again'); showmenu = false"
+        variant="accent4"
+        shape="round"
+        size="sm"
+        class="h-12 sm:h-14 p-0 flex items-center justify-center"
+        ><Again class="h-full w-auto" /></Button
+      >
+    </li>
+    <li class="text-center py-3 border-b">
+      <a href="/" class={currentPath === "" ? "italic font-bold" : "italic"}
+        >Forside</a
+      >
+    </li>
+    <li class="text-center py-3">
+      <a
+        href="/komponentbibliotek/"
+        class={currentPath === "komponentbibliotek/"
+          ? "italic font-bold"
+          : "italic"}>Komponentbibliotek</a
+      >
+    </li>
+  </ul>
+</nav>
