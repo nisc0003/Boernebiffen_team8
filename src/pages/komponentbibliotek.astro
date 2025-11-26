@@ -686,9 +686,19 @@ import Mag from "../assets/buttons/magnifier.svg";
         <div class="bg-accent-5-400 p-4 mt-10">
           <Heading htmlheading="h3" size="medium">Colors</Heading>
           <div
-            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-8"
+            class="grid gap-8 mt-8 grid-cols-[repeat(auto-fit,minmax(0,400px))] auto-rows-auto justify-center"
           >
-            <Card />
+            <Card
+              img="/imagetest.png"
+              heading="Vitello tigger en masse slik"
+              minutes="3"
+              link="/video/vitello-episode-1"
+              variant="accent5"
+              description="En sjov episode hvor Vitello tigger slik"
+              tags={["Vitello", "Humor", "Børn"]}
+              videoLink="https://youtube.com/watch?v=..."
+              dotColor="accent2"
+            />
           </div>
         </div>
         <!-- ============================================================================================== -->
