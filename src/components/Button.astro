@@ -4,12 +4,18 @@ const {
   variant = "accent1",
   size = "sm",
   shape = "square",
-  svg_accent = shape === "round" ? variant : "white",
+  stylingclasses = "",
+  type = "button",
+  svg_accent,
+  ...rest
 } = Astro.props;
+
+// compute svg_accent default depending on shape/variant
+const resolvedSvgAccent = svg_accent ?? (shape === "round" ? variant : "white");
 
 // Base classes for all buttons
 const baseClasses =
-  "inline-flex items-center justify-center gap-2 font-medium text-white select-none transition-all duration-200 font-display cursor-pointer hover:scale-105 active:scale-95";
+  "inline-flex items-center justify-center gap-2 font-medium select-none transition-all duration-200 font-display cursor-pointer hover:scale-105 active:scale-95";
 
 // Shape-specific classes
 const shapeClasses = {
@@ -61,12 +67,16 @@ const sizeClasses = {
 
 <!--Sæt classes for den pågældende knap sammen ved hjælp af Astros class:list -->
 <button
+  type={type}
+  {...rest}
   class:list={[
     baseClasses,
-    shapeClasses[shape],
-    variantClasses[variant],
-    sizeClasses[shape][size],
-    svg_accentClasses[svg_accent],
+    shapeClasses[shape] ?? "",
+    variantClasses[variant] ?? "",
+    sizeClasses[shape]?.[size] ?? "",
+    svg_accentClasses[resolvedSvgAccent] ?? "",
+    // custom classes last so they can override defaults (eg. bg-yellow-300 text-black)
+    stylingclasses,
   ]}
 >
   <slot name="icon" />
