@@ -1,6 +1,15 @@
+---
 import MainLayout from "../layouts/MainLayout.astro";
 import Heading from "../components/Heading.astro";
 import Text from "../components/Text.astro";
 import Button from "../components/Button.astro";
 import Link from "../components/Link.astro";
-import { Image } from "astro:assets"; // behold kun hvis du skal bruge Image
+// Note: `Image` from `astro:assets` is server-only. Only import it when used.
+---
+
+<MainLayout title="Forside">
+	<main class="container mx-auto p-4">
+		<Heading htmlheading="h1" size="large">Velkommen</Heading>
+		<Text>Dette er startsiden. Tilføj indhold her.</Text>
+	</main>
+</MainLayout>

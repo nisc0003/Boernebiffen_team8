@@ -75,25 +75,19 @@ const currentPath = Astro.url.pathname.replace(/^\//, "");
             x-on:click="showSearch = !showSearch"
             variant="accent5"
             shape="round"
-            size="md"
-            class="h-10 sm:h-12 md:h-14 p-0 flex items-center justify-center"
-            ><Mag class="h-full w-auto" /></Button
+            size="md"><Mag class="h-full w-auto" /></Button
           >
           <Button
             x-on:click="location.href='/liked'"
             variant="accent2"
             shape="round"
-            size="md"
-            class="h-10 sm:h-12 md:h-14 p-0 flex items-center justify-center"
-            ><Heart class="h-full w-auto" /></Button
+            size="md"><Heart class="h-full w-auto" /></Button
           >
           <Button
             x-on:click="console.log('watch again')"
             variant="accent4"
             shape="round"
-            size="md"
-            class="h-10 sm:h-12 md:h-14 p-0 flex items-center justify-center"
-            ><Again class="h-full w-auto" /></Button
+            size="md"><Again class="h-full w-auto" /></Button
           >
         </div>
 
@@ -144,6 +138,7 @@ const currentPath = Astro.url.pathname.replace(/^\//, "");
   x-show="showmenu"
   x-transition
   x-on:click.outside="showmenu = false"
+  <!--
 >
   <ul
     class="bg-white/95 border rounded-md border-black shadow-md overflow-hidden"
@@ -190,5 +185,5 @@ const currentPath = Astro.url.pathname.replace(/^\//, "");
           : "italic"}>Komponentbibliotek</a
       >
     </li>
-  </ul>
+  </ul> -->
 </nav>
