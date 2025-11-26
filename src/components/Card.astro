@@ -1,0 +1,116 @@
+---
+import Heading from "../components/Heading.astro";
+import Text from "../components/Text.astro";
+import Button from "../components/Button.astro";
+import Play from "../assets/buttons/play.svg";
+import Heart from "../assets/buttons/heart.svg";
+
+const {
+  img = "https://placehold.co/600x400",
+  heading = "Card Title",
+  minutes = "3",
+  link = "#",
+  variant = "accent5",
+  description = "",
+  tags = [],
+  videoLink = "",
+  dotColor, // NEW: allow dotColor override
+} = Astro.props;
+
+const variantClasses = {
+  accent1: "bg-accent-1-100 hover:bg-accent-1-200 transition-colors",
+  accent2: "bg-accent-2-100 hover:bg-accent-2-200 transition-colors",
+  accent3: "bg-accent-3-100 hover:bg-accent-3-200 transition-colors",
+  accent4: "bg-accent-4-100 hover:bg-accent-4-200 transition-colors",
+  accent5: "bg-accent-5-100 hover:bg-accent-5-200 transition-colors",
+};
+
+const dotColors = {
+  accent1: "text-accent-1-400",
+  accent2: "text-accent-2-400",
+  accent3: "text-accent-3-400",
+  accent4: "text-accent-4-400",
+  accent5: "text-accent-5-400",
+};
+
+// Use dotColor prop if provided (as accent name), else use variant mapping
+const dotColorClass = dotColor ? dotColors[dotColor] : dotColors[variant];
+---
+
+<article
+  class:list={[
+    "container/card w-full aspect-[3/4] p-4 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 grid grid-rows-[auto_1fr_auto] gap-4",
+    variantClasses[variant],
+    "[@container/card]:aspect-[3/4] max-w-full",
+  ]}
+  style="container-type: inline-size;"
+  data-description={description}
+  data-tags={JSON.stringify(tags)}
+  data-video-link={videoLink}
+>
+  <a href={link} class="contents">
+    <!-- IMAGE WRAPPER -->
+    <div
+      class="w-full aspect-[4/3] relative overflow-hidden rounded-lg shadow-sm group"
+      style="container-type: inline-size;"
+    >
+      <img
+        src={img}
+        alt={heading}
+        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+        loading="lazy"
+        decoding="async"
+        draggable="false"
+      />
+      <!-- PLAY BUTTON OVERLAY -->
+      <div
+        class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+      >
+        <Button variant="black" shape="round" size="sm" aria-label="Play video">
+          <Play />
+        </Button>
+      </div>
+      <!-- IMAGE OPACITY OVERLAY -->
+      <div
+        class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none"
+      >
+      </div>
+    </div>
+
+    <!-- HEADING -->
+    <div class="px-1 grid grid-cols-1 [grid-row:2]">
+      <Heading
+        htmlheading="h3"
+        size="medium"
+        stylingclasses="leading-snug break-words"
+      >
+        {heading}
+      </Heading>
+    </div>
+
+    <!-- BOTTOM ROW -->
+    <div class="px-1 flex items-end justify-between gap-2 [grid-row:3] w-full">
+      <!-- LEFT: DOT + MINUTES -->
+      <div class="flex items-center gap-2 min-w-0">
+        <span class:list={[dotColorClass, "leading-none"]} aria-hidden="true"
+          >⏺</span
+        >
+        <Text
+          teksttype="brødtekst"
+          stylingclasses="text-sm font-medium my-0 break-words items-end"
+          >{minutes} min</Text
+        >
+      </div>
+      <!-- HEART BUTTON -->
+      <Button
+        variant="accent2"
+        shape="round"
+        size="sm"
+        aria-label="Add to favorites"
+        class="self-end"
+      >
+        <Heart />
+      </Button>
+    </div>
+  </a>
+</article>

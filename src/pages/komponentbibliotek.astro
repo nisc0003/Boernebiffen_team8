@@ -43,16 +43,15 @@ import Mag from "../assets/buttons/magnifier.svg";
             htmlheading="h3"
             size="xlarge"
             weight="ExtraBold"
-            stylingclasses="uppercase"
-            ,>display</Heading
+            stylingclasses="uppercase">display</Heading
           >
           <Heading htmlheading="h1" size="xlarge">h1 - xlarge</Heading>
           <Heading htmlheading="h2" size="large">h2 - large</Heading>
           <Heading htmlheading="h3" size="medium">h3 - medium</Heading>
-          <Heading htmlheading="h4" size="small" weight="medium" ,
+          <Heading htmlheading="h4" size="small" weight="medium"
             >h4 - small</Heading
           >
-          <Heading htmlheading="h5" size="xsmall" weight="normal" ,
+          <Heading htmlheading="h5" size="xsmall" weight="normal"
             >h5 - xsmall</Heading
           >
           <Heading htmlheading="h1" font="sans" size="large"
@@ -680,5 +679,30 @@ import Mag from "../assets/buttons/magnifier.svg";
       </div>
     </section>
     <!-- ============================================================================================== -->
-  </main>
-</MainLayout>
+    <!-- card SECTION -->
+    <!-- ============================================================================================== -->
+    <section>
+      <div class="flex-col">
+        <div class="bg-accent-5-400 p-4 mt-10">
+          <Heading htmlheading="h3" size="medium">Colors</Heading>
+          <div
+            class="grid gap-8 mt-8 grid-cols-[repeat(auto-fit,minmax(0,400px))] auto-rows-auto justify-center"
+          >
+            <Card
+              img="/imagetest.png"
+              heading="Vitello tigger en masse slik"
+              minutes="3"
+              link="/video/vitello-episode-1"
+              variant="accent5"
+              description="En sjov episode hvor Vitello tigger slik"
+              tags={["Vitello", "Humor", "Børn"]}
+              videoLink="https://youtube.com/watch?v=..."
+              dotColor="accent2"
+            />
+          </div>
+        </div>
+        <!-- ============================================================================================== -->
+      </div>
+    </section>
+  </main></MainLayout
+>
