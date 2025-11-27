@@ -5,12 +5,78 @@ import Text from "../components/Text.astro";
 import Button from "../components/Button.astro";
 import Link from "../components/Link.astro";
 import Footer from "../components/Footer.astro";
-// Note: `Image` from `astro:assets` is server-only. Only import it when used.
+import Card from "../components/Card.astro";
+import ArrowRight from "../assets/buttons/arrowright.svg";
+import ArrowLeft from "../assets/buttons/arrowleft.svg";
+/* Sektioner bruger Tailwind arbitrary bg med CSS-variabler defineret i tailwind.css */
+const sections = [
+  {
+    title: "VINTER",
+    bgClass: "bg-[var(--section-1-bg)]",
+    cards: [
+      { id: 1, title: "Vitello tigger en masse slik", image: "/images/card1.jpg", duration: "7 min", liked: true },
+      { id: 2, title: "Lygtetfisk", image: "/images/card2.jpg", duration: "3 min", liked: false },
+      { id: 3, title: "Vilddyr episode 3 – Kastanje", image: "/images/card3.jpg", duration: "5 min" },
+      { id: 4, title: "Rita og krokodille: Skovturen", image: "/images/card4.jpg", duration: "5 min" }
+    ]
+  },
+  {
+    title: "FART PÅ!",
+    bgClass: "bg-[var(--section-2-bg)]",
+    cards: Array.from({ length: 4 }, (_, i) => ({ id: `f${i}`, title: `Kort ${i+1}`, image: "/images/card1.jpg", duration: "5 min" }))
+  },
+  {
+    title: "UD PÅ EVENTYR",
+    bgClass: "bg-[var(--section-3-bg)]",
+    cards: Array.from({ length: 4 }, (_, i) => ({ id: `u${i}`, title: `Eventyr ${i+1}`, image: "/images/card2.jpg", duration: "6 min" }))
+  },
+  {
+    title: "DYR OG NATUR",
+    bgClass: "bg-[var(--section-4-bg)]",
+    cards: Array.from({ length: 4 }, (_, i) => ({ id: `d${i}`, title: `Dyr ${i+1}`, image: "/images/card3.jpg", duration: "4 min" }))
+  }
+];
 ---
 
 <MainLayout title="Forside">
   <main class="container mx-auto p-4">
     <Heading htmlheading="h1" size="large">Velkommen</Heading>
     <Text>Dette er startsiden. Tilføj indhold her.</Text>
+
+    {sections.map((section) => (
+      <section key={section.title} aria-labelledby={section.title}>
+        <div class={`w-full ${section.bgClass}`}>
+          <div class="container mx-auto px-4 py-8 relative">
+
+            <h2 id={section.title} class="text-lg md:text-xl font-extrabold tracking-tight mb-6">{section.title}</h2>
+
+            <!-- left arrow (flyttet lidt udenfor grid på md+) -->
+            <button
+              type="button"
+              aria-label="Forrige"
+              class="hidden md:flex absolute left-3 md:left-0 md:-translate-x-12 top-1/2 -translate-y-1/2 z-40 w-10 h-10 items-center justify-center rounded-full bg-white shadow"
+            >
+              <ArrowLeft class="w-5 h-5 text-[var(--accent-1)]" />
+            </button>
+
+            <!-- right arrow (flyttet lidt udenfor grid på md+) -->
+            <button
+              type="button"
+              aria-label="Næste"
+              class="hidden md:flex absolute right-3 md:right-0 md:translate-x-12 top-1/2 -translate-y-1/2 z-40 w-10 h-10 items-center justify-center rounded-full bg-white shadow"
+            >
+              <ArrowRight class="w-5 h-5 text-[var(--accent-1)]" />
+            </button>
+
+            <!-- Card-grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {section.cards.map((c) => (
+                <Card key={c.id} title={c.title} image={c.image} duration={c.duration} liked={c.liked} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    ))}
   </main>
 </MainLayout>
