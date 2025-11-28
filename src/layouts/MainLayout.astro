@@ -2,6 +2,7 @@
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/tailwind.css";
+const currentPath = Astro.url.pathname.replace(/^\//, "");
 const { title } = Astro.props;
 ---
 
@@ -20,9 +21,30 @@ const { title } = Astro.props;
   </head>
   <body class="bg-primary">
     <Header />
-
     <slot />
 
+    <nav>
+      <li class="text-center py-3 border-b">
+        <a href="/" class={currentPath === "" ? "italic font-bold" : "italic"}
+          >Forside</a
+        >
+      </li>
+      <li class="text-center py-3 border-b">
+        <a
+          href="/komponentbibliotek/"
+          class={currentPath === "komponentbibliotek/"
+            ? "italic font-bold"
+            : "italic"}>Komponentbibliotek</a
+        >
+      </li>
+      <li class="text-center py-3 border-b">
+        <a
+          href="/login/"
+          class={currentPath === "login/" ? "italic font-bold" : "italic"}
+          >Login</a
+        >
+      </li>
+    </nav>
     <Footer />
   </body>
 </html>

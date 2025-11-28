@@ -6,14 +6,20 @@ import Button from "../components/Button.astro";
 import Link from "../components/Link.astro";
 
 // Mobile-first Tailwind klasser som variabler
-const containerClass = "w-[85%] max-w-xs sm:w-full sm:max-w-md text-center mx-auto";
-const inputClass = "mt-3 w-full sm:w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base placeholder-gray-500 border border-gray-200 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-[rgba(15,122,102,0.12)] block";
-const buttonClass = "mt-4 w-full sm:w-full px-3 sm:px-4 py-2 sm:py-3 bg-yellow-300 hover:bg-yellow-400 text-white font-bold rounded-lg tracking-wide uppercase text-sm sm:text-base shadow-sm focus:outline-none focus:ring-4 focus:ring-[rgba(0,0,0,0.08)] block";
+const containerClass =
+  "w-[85%] max-w-xs sm:w-full sm:max-w-md text-center mx-auto";
+const inputClass =
+  "mt-3 w-full sm:w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base placeholder-gray-500 border border-gray-200 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-[rgba(15,122,102,0.12)] block";
+const buttonClass =
+  "mt-4 w-full sm:w-full px-3 sm:px-4 py-2 sm:py-3 bg-yellow-300 hover:bg-yellow-400 text-white font-bold rounded-lg tracking-wide uppercase text-sm sm:text-base shadow-sm focus:outline-none focus:ring-4 focus:ring-[rgba(0,0,0,0.08)] block";
 const bottomTextClass = "text-white mt-5";
 const linkClass = "font-bold text-white mt-2 inline-block";
 ---
+
 <MainLayout title="Log ind">
-  <main class="min-h-screen bg-[var(--color-accent-5-100,#F7E3A9)] flex items-start justify-center py-10 px-4 sm:px-6">
+  <main
+    class="min-h-screen bg-[#F7E3A9] flex items-start justify-center py-10 px-4 sm:px-6"
+  >
     <div class={containerClass}>
       <Heading
         htmlheading="h1"
@@ -31,7 +37,7 @@ const linkClass = "font-bold text-white mt-2 inline-block";
         Brug dit bibliotekslogin til at se alle vores film.
       </Text>
 
-      <form class="mt-5" on:submit="event.preventDefault();" aria-label="Log ind formular">
+      <form class="mt-5" aria-label="Log ind formular">
         <!-- CPR / Email -->
         <input
           id="cpr"

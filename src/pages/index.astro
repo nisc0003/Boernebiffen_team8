@@ -4,47 +4,295 @@ import Heading from "../components/Heading.astro";
 import Text from "../components/Text.astro";
 import Button from "../components/Button.astro";
 import Link from "../components/Link.astro";
-import Footer from "../components/Footer.astro";
 import Card from "../components/Card.astro";
 import ArrowRight from "../assets/buttons/arrowright.svg";
 import ArrowLeft from "../assets/buttons/arrowleft.svg";
+import Heroimg from "../assets/hero_background.svg";
+import Karakter_dag from "../assets/karakter_dag.svg";
+import Play from "../assets/buttons/play.svg";
+
 /* Sektioner bruger Tailwind arbitrary bg med CSS-variabler defineret i tailwind.css */
+
 const sections = [
   {
     title: "VINTER",
     bgClass: "bg-[var(--section-1-bg)]",
     cards: [
-      { id: 1, title: "Vitello tigger en masse slik", image: "/images/card1.jpg", duration: "7 min", liked: true },
-      { id: 2, title: "Lygtetfisk", image: "/images/card2.jpg", duration: "3 min", liked: false },
-      { id: 3, title: "Vilddyr episode 3 – Kastanje", image: "/images/card3.jpg", duration: "5 min" },
-      { id: 4, title: "Rita og krokodille: Skovturen", image: "/images/card4.jpg", duration: "5 min" }
+      { 
+        id: 1, 
+        heading: "Ræven og nissen", 
+        img: "/cardimages/image.webp", 
+        minutes: "9", 
+        variant: "accent1",
+        description: "En magisk julehistorie om venskab mellem en ræv og en nisse i den kolde vinter.",
+        tags: ["jul", "vinter", "eventyr"],
+        videoLink: "https://example.com/raeven-og-nissen",
+        link: "/singlecard?img=/cardimages/image.webp&heading=Ræven%20og%20nissen&minutes=9&variant=accent1&description=En%20magisk%20julehistorie%20om%20venskab%20mellem%20en%20ræv%20og%20en%20nisse%20i%20den%20kolde%20vinter.&tags=jul,vinter,eventyr&videoLink=https://example.com/raeven-og-nissen"
+      },
+      { 
+        id: 2, 
+        heading: "Cirkeline: Højt fra træets grønne top", 
+        img: "/cardimages/image2.webp", 
+        minutes: "7",
+        variant: "accent2",
+        description: "Cirkeline og vennerne synger og hygger sig højt oppe i træet.",
+        tags: ["jul", "sang", "hygge"],
+        videoLink: "https://example.com/cirkeline-jul",
+        link: "/singlecard?img=/cardimages/image2.webp&heading=Cirkeline:%20Højt%20fra%20træets%20grønne%20top&minutes=7&variant=accent2&description=Cirkeline%20og%20vennerne%20synger%20og%20hygger%20sig%20højt%20oppe%20i%20træet.&tags=jul,sang,hygge&videoLink=https://example.com/cirkeline-jul"
+      },
+      { 
+        id: 3, 
+        heading: "Jagten på julemanden", 
+        img: "/cardimages/image3.webp", 
+        minutes: "12",
+        variant: "accent3",
+        description: "Et spændende eventyr hvor børnene går på jagt efter den ægte julemand.",
+        tags: ["jul", "eventyr", "spænding"],
+        videoLink: "https://example.com/jagten-julemanden",
+        link: "/singlecard?img=/cardimages/image3.webp&heading=Jagten%20på%20julemanden&minutes=12&variant=accent3&description=Et%20spændende%20eventyr%20hvor%20børnene%20går%20på%20jagt%20efter%20den%20ægte%20julemand.&tags=jul,eventyr,spænding&videoLink=https://example.com/jagten-julemanden"
+      },
+      { 
+        id: 4, 
+        heading: "Festlige fugle - Gaven", 
+        img: "/cardimages/image4.webp", 
+        minutes: "6",
+        variant: "accent4",
+        description: "De festlige fugle finder den perfekte gave til deres ven.",
+        tags: ["jul", "fugle", "gaver"],
+        videoLink: "https://example.com/festlige-fugle",
+        link: "/singlecard?img=/cardimages/image4.webp&heading=Festlige%20fugle%20-%20Gaven&minutes=6&variant=accent4&description=De%20festlige%20fugle%20finder%20den%20perfekte%20gave%20til%20deres%20ven.&tags=jul,fugle,gaver&videoLink=https://example.com/festlige-fugle"
+      }
     ]
   },
   {
     title: "FART PÅ!",
     bgClass: "bg-[var(--section-2-bg)]",
-    cards: Array.from({ length: 4 }, (_, i) => ({ id: `f${i}`, title: `Kort ${i+1}`, image: "/images/card1.jpg", duration: "5 min" }))
+    cards: [
+      { 
+        id: 5, 
+        heading: "Rita og Krokodille på farten", 
+        img: "/cardimages/image5.webp", 
+        minutes: "8",
+        variant: "accent5",
+        description: "Rita og hendes ven krokodillen oplever en vild dag fyldt med eventyr.",
+        tags: ["eventyr", "action", "sjov"],
+        videoLink: "https://example.com/rita-farten",
+        link: "/singlecard?img=/cardimages/image5.webp&heading=Rita%20og%20Krokodille%20på%20farten&minutes=8&variant=accent5&description=Rita%20og%20hendes%20ven%20krokodillen%20oplever%20en%20vild%20dag%20fyldt%20med%20eventyr.&tags=eventyr,action,sjov&videoLink=https://example.com/rita-farten"
+      },
+      { 
+        id: 6, 
+        heading: "Lynet og larmen", 
+        img: "/cardimages/image6.webp", 
+        minutes: "10",
+        variant: "accent1",
+        description: "Hurtige biler og store eventyr venter når lynet slår ned.",
+        tags: ["action", "fart", "spænding"],
+        videoLink: "https://example.com/lynet-larmen",
+        link: "/singlecard?img=/cardimages/image6.webp&heading=Lynet%20og%20larmen&minutes=10&variant=accent1&description=Hurtige%20biler%20og%20store%20eventyr%20venter%20når%20lynet%20slår%20ned.&tags=action,fart,spænding&videoLink=https://example.com/lynet-larmen"
+      },
+      { 
+        id: 7, 
+        heading: "Raketterne letter", 
+        img: "/cardimages/image7.webp", 
+        minutes: "5",
+        variant: "accent2",
+        description: "Op i himlen hvor raketterne flyver hurtigere end vinden.",
+        tags: ["rummet", "action", "fart"],
+        videoLink: "https://example.com/raketterne",
+        link: "/singlecard?img=/cardimages/image7.webp&heading=Raketterne%20letter&minutes=5&variant=accent2&description=Op%20i%20himlen%20hvor%20raketterne%20flyver%20hurtigere%20end%20vinden.&tags=rummet,action,fart&videoLink=https://example.com/raketterne"
+      },
+      { 
+        id: 8, 
+        heading: "Vildt racerløb", 
+        img: "/cardimages/image8.webp", 
+        minutes: "11",
+        variant: "accent3",
+        description: "Det vildeste racerløb nogensinde med de hurtigste venner.",
+        tags: ["ræs", "konkurrence", "fart"],
+        videoLink: "https://example.com/racerloeb",
+        link: "/singlecard?img=/cardimages/image8.webp&heading=Vildt%20racerløb&minutes=11&variant=accent3&description=Det%20vildeste%20racerløb%20nogensinde%20med%20de%20hurtigste%20venner.&tags=ræs,konkurrence,fart&videoLink=https://example.com/racerloeb"
+      }
+    ]
   },
   {
     title: "UD PÅ EVENTYR",
     bgClass: "bg-[var(--section-3-bg)]",
-    cards: Array.from({ length: 4 }, (_, i) => ({ id: `u${i}`, title: `Eventyr ${i+1}`, image: "/images/card2.jpg", duration: "6 min" }))
+    cards: [
+      { 
+        id: 9, 
+        heading: "Skovens hemmelige sti", 
+        img: "/cardimages/image.webp", 
+        minutes: "14",
+        variant: "accent4",
+        description: "En mystisk sti fører dybt ind i skoven hvor magien venter.",
+        tags: ["eventyr", "skov", "mysterium"],
+        videoLink: "https://example.com/skovens-sti",
+        link: "/singlecard?img=/cardimages/image.webp&heading=Skovens%20hemmelige%20sti&minutes=14&variant=accent4&description=En%20mystisk%20sti%20fører%20dybt%20ind%20i%20skoven%20hvor%20magien%20venter.&tags=eventyr,skov,mysterium&videoLink=https://example.com/skovens-sti"
+      },
+      { 
+        id: 10, 
+        heading: "Bjergbestigning med venner", 
+        img: "/cardimages/image2.webp", 
+        minutes: "13",
+        variant: "accent5",
+        description: "Sammen klatrer vennerne op ad det højeste bjerg.",
+        tags: ["eventyr", "bjerge", "venskab"],
+        videoLink: "https://example.com/bjergbestigning",
+        link: "/singlecard?img=/cardimages/image2.webp&heading=Bjergbestigning%20med%20venner&minutes=13&variant=accent5&description=Sammen%20klatrer%20vennerne%20op%20ad%20det%20højeste%20bjerg.&tags=eventyr,bjerge,venskab&videoLink=https://example.com/bjergbestigning"
+      },
+      { 
+        id: 11, 
+        heading: "Skattejægerne", 
+        img: "/cardimages/image3.webp", 
+        minutes: "15",
+        variant: "accent1",
+        description: "På jagt efter den forsvundne skat gennem farlige landskaber.",
+        tags: ["eventyr", "skat", "spænding"],
+        videoLink: "https://example.com/skattejaegerne",
+        link: "/singlecard?img=/cardimages/image3.webp&heading=Skattejægerne&minutes=15&variant=accent1&description=På%20jagt%20efter%20den%20forsvundne%20skat%20gennem%20farlige%20landskaber.&tags=eventyr,skat,spænding&videoLink=https://example.com/skattejaegerne"
+      },
+      { 
+        id: 12, 
+        heading: "Havets dybder", 
+        img: "/cardimages/image4.webp", 
+        minutes: "9",
+        variant: "accent2",
+        description: "Dyk ned i havets dybder og mød de utrolige væsener.",
+        tags: ["eventyr", "hav", "undervandsverdenen"],
+        videoLink: "https://example.com/havets-dybder",
+        link: "/singlecard?img=/cardimages/image4.webp&heading=Havets%20dybder&minutes=9&variant=accent2&description=Dyk%20ned%20i%20havets%20dybder%20og%20mød%20de%20utrolige%20væsener.&tags=eventyr,hav,undervandsverdenen&videoLink=https://example.com/havets-dybder"
+      }
+    ]
   },
   {
     title: "DYR OG NATUR",
     bgClass: "bg-[var(--section-4-bg)]",
-    cards: Array.from({ length: 4 }, (_, i) => ({ id: `d${i}`, title: `Dyr ${i+1}`, image: "/images/card3.jpg", duration: "4 min" }))
+    cards: [
+      { 
+        id: 13, 
+        heading: "Ville og Vilde Kanin", 
+        img: "/cardimages/image5.webp", 
+        minutes: "7",
+        variant: "accent3",
+        description: "Ville er en lille hvid kanin, der bor i et bur på en bondegård, hvor han har det godt og trygt.",
+        tags: ["dyr", "kanin", "bondegård"],
+        videoLink: "https://example.com/ville-kanin",
+        link: "/singlecard?img=/cardimages/image5.webp&heading=Ville%20og%20Vilde%20Kanin&minutes=7&variant=accent3&description=Ville%20er%20en%20lille%20hvid%20kanin,%20der%20bor%20i%20et%20bur%20på%20en%20bondegård,%20hvor%20han%20har%20det%20godt%20og%20trygt.&tags=dyr,kanin,bondegård&videoLink=https://example.com/ville-kanin"
+      },
+      { 
+        id: 14, 
+        heading: "Fuglenes sang", 
+        img: "/cardimages/image6.webp", 
+        minutes: "6",
+        variant: "accent4",
+        description: "Lær om alle de smukke fugle og deres melodier i naturen.",
+        tags: ["dyr", "fugle", "natur"],
+        videoLink: "https://example.com/fuglenes-sang",
+        link: "/singlecard?img=/cardimages/image6.webp&heading=Fuglenes%20sang&minutes=6&variant=accent4&description=Lær%20om%20alle%20de%20smukke%20fugle%20og%20deres%20melodier%20i%20naturen.&tags=dyr,fugle,natur&videoLink=https://example.com/fuglenes-sang"
+      },
+      { 
+        id: 15, 
+        heading: "Skovens dyreliv", 
+        img: "/cardimages/image7.webp", 
+        minutes: "10",
+        variant: "accent5",
+        description: "Oplev livet i skoven med ræve, hjorte og alle de andre dyr.",
+        tags: ["dyr", "skov", "natur"],
+        videoLink: "https://example.com/skovens-dyreliv",
+        link: "/singlecard?img=/cardimages/image7.webp&heading=Skovens%20dyreliv&minutes=10&variant=accent5&description=Oplev%20livet%20i%20skoven%20med%20ræve,%20hjorte%20og%20alle%20de%20andre%20dyr.&tags=dyr,skov,natur&videoLink=https://example.com/skovens-dyreliv"
+      },
+      { 
+        id: 16, 
+        heading: "Årstidernes forandring", 
+        img: "/cardimages/image8.webp", 
+        minutes: "8",
+        variant: "accent1",
+        description: "Se hvordan naturen ændrer sig gennem de fire årstider.",
+        tags: ["natur", "årstider", "læring"],
+        videoLink: "https://example.com/aarstiderne",
+        link: "/singlecard?img=/cardimages/image8.webp&heading=Årstidernes%20forandring&minutes=8&variant=accent1&description=Se%20hvordan%20naturen%20ændrer%20sig%20gennem%20de%20fire%20årstider.&tags=natur,årstider,læring&videoLink=https://example.com/aarstiderne"
+      }
+    ]
   }
 ];
+
+
 ---
 
 <MainLayout title="Forside">
+
+<!-- __________________________________________ HERO SECTION __________________________________________ -->
+
+<section 
+  x-data="{ expanded: false }"
+  class="w-full relative overflow-hidden bg-white py-16 -mt-[28vh] pt-[calc(28vh+4rem)]"
+  style={`background-image: url(${Heroimg.src}); background-size: cover; background-position: center;`}
+>
+
+  <div class="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+    <!-- _____________________________________ TEKST (RESPONSIV) _____________________________________ -->
+    <div class="flex flex-col justify-center">
+
+      <Heading 
+        level="1"
+        weight="bold"
+        class="text-3xl lg:text-5xl leading-tight mb-4"
+      >
+        Genopfind Oplevelsen
+      </Heading>
+
+      <!-- Tekst med "Læs mere" toggle -->
+      <Text 
+      >
+        Oplev hvordan vores platform skaber en mere intuitiv, visuel og dynamisk måde at arbejde på. Tag dine projekter til næste niveau med hjælp fra klare processer og moderne design.
+      </Text>
+              <span>      <button 
+        @click="expanded = !expanded"
+        class="text-sm font-medium text-blue-600 underline mb-6 block lg:hidden"
+      >
+        <span x-show="!expanded">Læs mere</span>
+        <span x-show="expanded">Luk</span>
+      </button></span>
+
+      <!-- CTA -->
+      <div>
+        <Button variant="accent5" size="lg" svg_accent="none">
+          <Play slot="icon" />
+        </Button>
+      </div>
+    </div>
+
+
+    <!-- _____________________________________ BILLEDE (RESPONSIV) _____________________________________ -->
+    <div class="relative w-full h-full min-h-[300px] lg:min-h-[400px] flex items-center justify-center">
+
+      <!-- Hero billede (samme i mobil/desktop) -->
+      <img
+        src="images/Ville_kanin.png"
+        alt="Hero billede"
+        class="rounded-xl shadow-xl w-full h-auto object-cover"
+      />
+
+      <!-- Illustration — flytter sig automatisk -->
+      <img
+        src={Karakter_dag.src}
+        alt="Karakter illustration"
+        class="absolute w-40 sm:w-48 lg:w-60 -bottom-10 sm:-bottom-12 lg:-bottom-16 right-0 sm:-right-4 lg:-right-12 animate-fade-up"
+      />
+    </div>
+
+  </div>
+</section>
+
+<!-- ________________________________________________________________________________________________________________ -->
+
   <main class="container mx-auto p-4">
     <Heading htmlheading="h1" size="large">Velkommen</Heading>
     <Text>Dette er startsiden. Tilføj indhold her.</Text>
 
     {sections.map((section) => (
-      <section key={section.title} aria-labelledby={section.title}>
+      <section key={section.title} aria-labelledby={section.title}> 
         <div class={`w-full ${section.bgClass}`}>
           <div class="container mx-auto px-4 py-8 relative">
 
@@ -71,7 +319,17 @@ const sections = [
             <!-- Card-grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {section.cards.map((c) => (
-                <Card key={c.id} title={c.title} image={c.image} duration={c.duration} liked={c.liked} />
+                <Card 
+                  key={c.id} 
+                  heading={c.heading} 
+                  img={c.img} 
+                  minutes={c.minutes}
+                  link={c.link}
+                  variant={c.variant}
+                  description={c.description}
+                  tags={c.tags}
+                  videoLink={c.videoLink}
+                />
               ))}
             </div>
           </div>

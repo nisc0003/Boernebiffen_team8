@@ -1,0 +1,90 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Card from "../components/Card.astro";
+import Heading from "../components/Heading.astro";
+import Text from "../components/Text.astro";
+
+// Read query parameters from the URL and map to Card props
+const params = Astro.url.searchParams;
+
+const img = params.get("img") ?? "https://placehold.co/600x400";
+const heading = params.get("heading") ?? "Card Title";
+const minutes = params.get("minutes") ?? "3";
+const link = params.get("link") ?? "#";
+const variant = params.get("variant") ?? "accent5";
+const description = params.get("description") ?? "";
+
+// tags as comma-separated string: ?tags=funny,short,animals
+const tagsParam = params.get("tags");
+const tags = tagsParam
+  ? tagsParam
+      .split(",")
+      .map((t) => t.trim())
+      .filter(Boolean)
+  : [];
+
+const videoLink = params.get("videoLink") ?? "";
+const dotColor = params.get("dotColor") ?? undefined;
+---
+
+<MainLayout title={`Single Card: ${heading}`}>
+  <main class="container mx-auto p-4 pt-[calc(28vh+2rem)]">
+    <Heading htmlheading="h1" size="large">{heading}</Heading>
+    <Text>En enkelt visning af kortet med de givne parametre.</Text>
+
+    <section class="grid md:grid-cols-2 gap-6 mt-6 items-start">
+      <!-- Left: Actual Card component -->
+      <div>
+        <Card
+          img={img}
+          heading={heading}
+          minutes={minutes}
+          link={link}
+          variant={variant}
+          description={description}
+          tags={tags}
+          videoLink={videoLink}
+          dotColor={dotColor}
+        />
+      </div>
+
+      <!-- Right: Details mapped from props -->
+      <div class="bg-white/80 border border-black/10 rounded-lg p-4 shadow-sm">
+        <Heading htmlheading="h2" size="medium">Kort detaljer</Heading>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li><strong>Billede:</strong> <code>{img}</code></li>
+          <li><strong>Titel:</strong> {heading}</li>
+          <li><strong>Minutter:</strong> {minutes}</li>
+          <li>
+            <strong>Link:</strong>
+            <a href={link} class="underline" target="_blank" rel="noopener"
+              >{link}</a
+            >
+          </li>
+          <li><strong>Variant:</strong> {variant}</li>
+          <li><strong>Beskrivelse:</strong> {description || "(ingen)"}</li>
+          <li>
+            <strong>Tags:</strong>
+            {tags.length ? tags.join(", ") : "(ingen)"}
+          </li>
+          <li><strong>Video link:</strong> {videoLink || "(ingen)"}</li>
+          <li>
+            <strong>Dot farve:</strong>
+            {dotColor || "(auto fra variant)"}
+          </li>
+        </ul>
+
+        <div class="mt-6">
+          <Heading htmlheading="h3" size="small">Del/parametre</Heading>
+          <Text stylingclasses="text-sm"
+            >Du kan styre kortet ved at angive query parametre i URL'en:</Text
+          >
+          <pre
+            class="mt-2 p-3 bg-black/5 rounded text-xs overflow-x-auto">
+/singlecard?img=/images/card1.jpg&heading=Min%20Film&minutes=7&link=%2Fmovie%2F123&variant=accent3&description=En%20kort%20beskrivelse&tags=eventyr,b%C3%B8rn&videoLink=https%3A%2F%2Fexample.com%2Fv%2F123&dotColor=accent2
+          </pre>
+        </div>
+      </div>
+    </section>
+  </main>
+</MainLayout>
